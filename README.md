@@ -3,6 +3,11 @@ macOS High Sierra 预装了 Ruby(2.3.3)、PHP(7.1.7)、Perl(5.18.2)、Python(2.7
 
 以下是我的 MNMP（macOS-nginx-MySQL-PHP）的安装过程。
 
+> 本教程用使用了三处代替：
+> * 使用 iTerm2 代替了系统自带的命令行终端
+> * 使用 nginx 代替了系统自带的 Apache
+> * 使用 PHP7.2 代替了系统自带的 PHP7.1
+
 #### 安装 iTerm2 
 
 推荐 [iTerm2](http://www.iterm2.com/)，iTerm2 功能强大，可以替代系统默认的命令行终端。下载解压后，将 iTerm2 直接拖入"应用程序"目录。
