@@ -14,7 +14,7 @@ macOS High Sierra 预装了 Ruby(2.3.3)、PHP(7.1.7)、Perl(5.18.2)、Python(2.7
 
 #### 安装 Xcode
 
-[Xcode](https://itunes.apple.com/cn/app/xcode/id497799835) 是苹果出品的包含一系列工具及库的开发套件。通过 AppStore 安装最新版本的 Xcode(9.0)。我们一般不会用 Xcode 来开发后端项目。但这一步也是`必须`的，因为 Xcode 会附带安装一些如 Git 等必要的软件。
+[Xcode](https://itunes.apple.com/cn/app/xcode/id497799835) 是苹果出品的包含一系列工具及库的开发套件。通过 AppStore 安装最新版本的 Xcode(9.0)。我们一般不会用 Xcode 来开发后端项目。但这一步也是**必须**的，因为 Xcode 会附带安装一些如 Git 等必要的软件。
 
 
 #### 安装 Xcode Command Line Tools
@@ -26,7 +26,7 @@ macOS High Sierra 预装了 Ruby(2.3.3)、PHP(7.1.7)、Perl(5.18.2)、Python(2.7
 xcode-select --install
 ```
 
-当 Xcode 和 Xcode Command Line Tools 安装完成后，你需要启动 Xcode，并点击同意接受许可协议，然后关闭 Xcode 就可以了。这一步骤也是`必须`的，否则 Xcode 包含的一系列开发工具都将不可用。
+当 Xcode 和 Xcode Command Line Tools 安装完成后，你需要启动 Xcode，并点击同意接受许可协议，然后关闭 Xcode 就可以了。这一步骤也是**必须**的，否则 Xcode 包含的一系列开发工具都将不可用。
 
 #### 安装 Homebrew
  
