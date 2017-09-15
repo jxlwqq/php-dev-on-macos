@@ -12,7 +12,7 @@ macOS High Sierra 预装了 Ruby(2.3.3)、PHP(7.1.7)、Perl(5.18.2)、Python(2.7
 
 #### 安装 Xcode
 
-Xcode 是苹果出品的包含一系列工具及库的开发套件。通过 AppStore 安装最新版本的 Xcode(9.0)。我们一般不会用 Xcode 来开发后端项目。但这一步也是`必须`的，因为 Xcode 会附带安装一些如 Git 等必要的软件。
+[Xcode](https://itunes.apple.com/cn/app/xcode/id497799835) 是苹果出品的包含一系列工具及库的开发套件。通过 AppStore 安装最新版本的 Xcode(9.0)。我们一般不会用 Xcode 来开发后端项目。但这一步也是`必须`的，因为 Xcode 会附带安装一些如 Git 等必要的软件。
 
 
 #### 安装 Xcode Command Line Tools
@@ -20,6 +20,7 @@ Xcode 是苹果出品的包含一系列工具及库的开发套件。通过 AppS
 这一步会帮你安装许多常见的基于 Unix 的工具。Xcode 命令行工具作为 Xcode 的一部分，包含了 GCC 编译器。在命令行中执行以下命令即可安装：
 
 ```
+# 安装 Xcode Command Line Tools
 xcode-select --install
 ```
 
@@ -30,10 +31,11 @@ xcode-select --install
 [Homebrew](http://brew.sh/index_zh-cn.html) 作为 macOS 不可或缺的套件管理器，用来安装、升级以及卸载常用的软件。在命令行中执行以下命令即可安装：
 
 ```
+# 使用系统自带的 ruby 安装 Homebrew
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
-安装后可以修改 Homebrew 源，国外源一直不是很给力，这里我们将 Homebrew 的 git 远程仓库改为中国科学技术大学开源软件镜像：
+安装后可以修改 Homebrew 源，国外源一直不是很给力，这里我们将 Homebrew 的 git 远程仓库改为[中国科学技术大学开源软件镜像](https://lug.ustc.edu.cn/wiki/mirrors/help/brew.git)：
 
 ```
 cd "$(brew --repo)"
@@ -86,7 +88,7 @@ mysql -u root -p
 
 #### 安装 Redis
 推荐 Redis 作为 noSQL 数据库服务器：
-```angular2html
+```bash
 brew install redis
 ```
 安装完成后，启动 Redis：
@@ -110,15 +112,16 @@ source ~/.bash_profile
 php -v
 php-fpm -v
 ```
+安装 php5.* 也是用类似方法。
 
 #### 配置 nginx.conf 文件
 
 通过以下命令可以查看 nginx.conf 文件的位置： 
-```
+```bash
 nginx -h
 ```
 输出：
-```
+```bash
 nginx version: nginx/1.12.1
 Usage: nginx [-?hvVtTq] [-s signal] [-c filename] [-p prefix] [-g directives]
 
@@ -135,15 +138,15 @@ Options:
   -g directives : set global directives out of configuration file
 ```
 打开配置文件：
-```
+```bash
 vi /usr/local/etc/nginx/nginx.conf
 ```
 在文件末尾可以看到：
-```
+```bash
 include servers/*;
 ```
 它将同目录下的servers目录里的文件都包含了进来，由此，我们可以在servers文件里创建开发项目的配置信息：
-```
+```bash
 cd servers/
 vi test.conf
 ```
@@ -169,16 +172,16 @@ server {
 ```
 
 在上述的`/home/www/php_project`的目录下，我们创建一个 index.php 文件：
-```
+```bash
 vi /home/www/php_project/index.php
 ```
 写入内容：
-```
+```php
 <?php
 phpinfo();
 ```
 重启 nginx:
-```
+```bash
 sudo nginx -s stop && sudo nginx
 ```
 
@@ -188,19 +191,20 @@ sudo nginx -s stop && sudo nginx
 
 Composer 是 PHP 用来管理依赖（dependency）关系的工具。你可以在自己的项目中声明所依赖的外部工具库（libraries），Composer 会帮你安装这些依赖的库文件。
 
-```
+安装并启动[国内镜像服务](https://pkg.phpcomposer.com/#how-to-use-packagist-mirror)：
+```bash
 curl -sS https://getcomposer.org/installer | php
 mv composer.phar /usr/local/bin/composer
-composer config -g repo.packagist composer https://packagist.phpcomposer.com
+composer config -g repo.packagist composer https://packagist.phpcomposer.com # 改为国内源
 ```
 
 #### 安装 PHP 扩展
 
-以 php-redis 扩展为例，下载源码包来进行安装：
+不推荐用 pecl 的方式安装 PHP 扩展。以 php-redis 扩展为例，下载源码包来进行安装：
 ```
-wget https://pecl.php.net/get/redis-3.1.3.tgz
-tar -zxvf redis-3.1.3.tgz
-cd redis-2.2.8
+wget https://pecl.php.net/get/redis-3.1.3.tgz # 下载源码包
+tar -zxvf redis-3.1.3.tgz # 解压
+cd redis-3.1.3
 phpize # 生成编译配置                 
 ./configure # 编译配置检测
 make # 编译
@@ -209,8 +213,12 @@ make install # 安装
 
 扩展安装完成后，我们还需最后一步，修改`php.ini`文件，并重启 PHP-FPM：
 ```
-vi /usr/local/etc/php/7.2/php.ini # 追加 extension=redis.so
+# 追加 extension=redis.so
+vi /usr/local/etc/php/7.2/php.ini
+
 # 重启 php-fpm
 sudo killall php-fpm && sudo php-fpm -D
-php -m |grep redis # 查看是否安装成功
+
+# 查看是否安装成功
+php -m |grep redis 
 ```
