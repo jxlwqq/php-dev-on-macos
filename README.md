@@ -1,5 +1,7 @@
-2017 年 9 月 下旬，苹果公司正式发布了新一代 macOS，版本为 High Sierra (11.13)。
+2017 年 9 月 26 日，苹果公司正式发布了新一代 [macOS](https://www.apple.com/cn/macos/high-sierra/)，版本为 High Sierra (11.13)。
 macOS High Sierra 预装了 Ruby(2.3.3)、PHP(7.1.7)、Perl(5.18.2)、Python(2.7.10) 等常用的脚本语言，以及 Apache(2.4.27)服务器。
+
+以下是我的 MNMP（macOS-nginx-MySQL-PHP）的安装过程。
 
 #### 安装 iTerm2 
 
@@ -111,6 +113,11 @@ source ~/.bash_profile
 ```bash
 php -v
 php-fpm -v
+```
+
+启动 php-fpm:
+```bash
+sudo killall php-fpm && sudo php-fpm
 ```
 安装 php5.* 也是用类似方法。
 
