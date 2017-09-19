@@ -1,5 +1,5 @@
 2017 年 9 月 26 日，苹果公司正式发布了新一代 [macOS](https://www.apple.com/cn/macos/high-sierra/)，版本为 High Sierra (11.13)。
-macOS High Sierra 预装了 Ruby(2.3.3)、PHP(7.1.7)、Perl(5.18.2)、Python(2.7.10) 等常用的脚本语言，以及 Apache(2.4.27)服务器。
+macOS High Sierra 预装了 Ruby(2.3.3)、PHP(7.1.7)、Perl(5.18.2)、Python(2.7.10) 等常用的脚本语言，以及 Apache(2.4.27) Web 服务器。
 
 以下是我的 MNMP（macOS-nginx-MySQL-PHP）的安装过程。
 
@@ -124,7 +124,7 @@ php-fpm -v
 ```bash
 sudo killall php-fpm && sudo php-fpm
 ```
-安装 php5.* 也是用类似方法。
+> 根据个人的实际开发场景，降版本安装 php5.* 也是用类似方法，即把 php72 替换为 php56
 
 #### 配置 nginx.conf 文件
 
